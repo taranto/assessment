@@ -1,5 +1,6 @@
 require './numerals_strings'
 require 'pry'
+require 'pry-byebug'
 
 #puts 'Hello world'
 
@@ -15,6 +16,25 @@ class Numerals
 	def self.translate_process base_num, partial_translation, ignore_zero, space_required
 		evaluate_numeral = base_num
 		case base_num
+		when 10000..99999
+			ignore_zero = true
+			numeral_right_part_number = numeral_right_part(evaluate_numeral, 3)
+			numeral_right_part_translation = translate_process(numeral_right_part_number, partial_translation, ignore_zero, space_required)
+			puts numeral_right_part_number
+			puts numeral_right_part_translation
+			numeral_middle_part_number = numeral_fraction(evaluate_numeral, 2, 3)
+			numeral_middle_part_translation = translate_process(numeral_middle_part_number+00, partial_translation, ignore_zero, space_required)
+			puts numeral_middle_part_number
+			puts numeral_middle_part_translation
+			binding.pry
+			numeral_left_part_number = numeral_left_part(evaluate_numeral, 2)
+			numeral_left_part_translation = translate_process(numeral_left_part_number, partial_translation, ignore_zero, space_required)
+			puts numeral_left_part_number
+			puts numeral_left_part_translation
+			partial_translation = 
+				numeral_left_part_translation numeral_left_part_translation + NumeralsStrings.translate_x000 + 
+				add_begin_space_if_not_null(numeral_middle_part_translation) + NumeralsStrings.translate_x00 + 
+				add_begin_space_if_not_null(add_begin_AND_if_not_null(numeral_right_part_translation))
 		when 1000..9999
 			ignore_zero = true
 			numeral_right_part_number = numeral_right_part(evaluate_numeral, 2)
@@ -61,6 +81,10 @@ class Numerals
 
 	def self.numeral_left_part num, cut_position
 		num.to_s[0..cut_position-1].to_i
+	end
+
+	def self.numeral_fraction num, cut_position_begin, cut_position_end
+		num.to_s[cut_position_begin..cut_position_end-1].to_i
 	end
 
 	def self.add_end_space_if_required partial_translation, space_required

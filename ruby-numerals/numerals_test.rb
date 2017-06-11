@@ -54,8 +54,8 @@ class NumeralsTest < Test::Unit::TestCase
  	def test_translate_a_numeral_to_english3000
 		assert_equal('thirty hundred', Numerals.translate_numeral(3000))
  	end
- 	def test_numeral_right_part1999
-		assert_equal(99, Numerals.numeral_right_part(1999, 2))
+ 	def test_numeral_right_part1997
+		assert_equal(97, Numerals.numeral_right_part(1997, 2))
 	end
 	def test_numeral_left_part1999
 		assert_equal(19, Numerals.numeral_left_part(1999, 2))
@@ -68,9 +68,18 @@ class NumeralsTest < Test::Unit::TestCase
 		assert_equal('seventy nine hundred', 
 			Numerals.translate_numeral(7900))
  	end
-# 	def test_translate_a_numeral_to_english17999
-#		assert_equal('seventeen thousand nine hundred and ninety nine', 
-#			Numerals.translate_numeral(17999))
-# 	end
+ 	def test_numeral_fraction123456
+		assert_equal(34, Numerals.numeral_fraction(123456, 2, 4))
+	end
+	 	def test_numeral_right_part123456
+		assert_equal(56, Numerals.numeral_right_part(123456, 4))
+	end
+	def test_numeral_left_part1123456
+		assert_equal(12, Numerals.numeral_left_part(123456, 2))
+	end
+ 	def test_translate_a_numeral_to_english17999
+		assert_equal('seventeen thousand nine hundred and ninety nine', 
+			Numerals.translate_numeral(17999))
+ 	end
  	
 end	
