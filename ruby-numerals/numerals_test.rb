@@ -33,6 +33,9 @@ class NumeralsTest < Test::Unit::TestCase
  	def test_translate_a_numeral_to_english15
 		assert_equal('fifteen', Numerals.translate_numeral(15))
  	end
+#	def test_translate_a_numeral_to_english101
+#		assert_equal('one hundred and one', Numerals.translate_numeral(101))
+# 	end
 end	
 
 
