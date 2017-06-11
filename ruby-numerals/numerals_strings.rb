@@ -3,7 +3,7 @@
 class NumeralsStrings
 
 
-	def self.translate_unit_string num
+	def self.translate_0_to_9 num
 		case num
 		when 0
 			'zero'
@@ -28,7 +28,7 @@ class NumeralsStrings
 		end
 	end
 
-	def self.translate_ten_to_nineteen_stirng num
+	def self.translate_10_to_19 num
 		case num
 		when 10
 			'ten'
@@ -53,7 +53,7 @@ class NumeralsStrings
 		end
 	end
 
-	def self.translate_twenty_to_ninety_string num
+	def self.translate_20_to_99 num
 		case num
 		when 20..29
 			'twenty'
@@ -72,5 +72,13 @@ class NumeralsStrings
 		when 90..99
 			'ninety'
 		end
+	end
+
+	def self.translate_x00
+		'hundred'
+	end
+
+	def self.translate_x000
+		'thousand'
 	end
 end
