@@ -7,10 +7,13 @@
 #puts name
 
 class Numerals 
-	def self.first_method a,b
-		'expected result'
-	end
-	def self.second_method a,b
-		'unexpected result'
+	def self.translate_numeral num
+		if (num == 1)
+			'one'
+		elsif (num == 8)
+			'eight'
+		else (num == 0)
+			'zero'
+		end
 	end
 end

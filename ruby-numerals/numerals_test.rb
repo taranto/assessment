@@ -3,12 +3,16 @@ require './numerals'
 
 class NumeralsTest < Test::Unit::TestCase
 
-	def test_first_method
-		assert_equal('expected result', 
-			Numerals.first_method(1,2))
+	def test_translate_an_unit_to_english1
+		assert_equal('one', Numerals.translate_numeral(1))
 	end
-	def test_second_method
-		assert_equal('unexpected result', 
-			Numerals.second_method(1,2))
+	def test_translate_an_unit_to_english8
+		assert_equal('eight', Numerals.translate_numeral(8))
+	end
+	def test_translate_an_unit_to_english0
+		assert_equal('zero', Numerals.translate_numeral(0))
 	end
 end	
+
+
+
