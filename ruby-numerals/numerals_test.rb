@@ -12,7 +12,7 @@ class NumeralsTest < Test::Unit::TestCase
 	def test_cut_number1
 		assert_equal(23, Numerals.cut_number(123, 1))
 	end
-		def test_cut_number2
+	def test_cut_number2
 		assert_equal(3, Numerals.cut_number(123, 2))
 	end
 	def test_translate_a_numeral_to_english40
@@ -23,6 +23,15 @@ class NumeralsTest < Test::Unit::TestCase
 	end
 	def test_translate_a_numeral_to_english66
 		assert_equal('sixty six', Numerals.translate_numeral(66))
+ 	end
+ 	def test_translate_a_numeral_to_english10
+		assert_equal('ten', Numerals.translate_numeral(10))
+ 	end
+ 	def test_translate_a_numeral_to_english12
+		assert_equal('twelve', Numerals.translate_numeral(12))
+ 	end
+ 	def test_translate_a_numeral_to_english15
+		assert_equal('fifteen', Numerals.translate_numeral(15))
  	end
 end	
 

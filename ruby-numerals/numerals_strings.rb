@@ -2,6 +2,7 @@
 
 class NumeralsStrings
 
+
 	def self.translate_unit_string num
 		case num
 		when 0
@@ -27,28 +28,33 @@ class NumeralsStrings
 		end
 	end
 
-	def self.translate_ten_to_ninety_string num
+	def self.translate_ten_to_nineteen_stirng num
 		case num
-		when 10..19
+		when 10
 			'ten'
-#		when 11
-#			'eleven'
-#		when 12 
-#			'twelve'
-#		when 13
-#			'thirteen'
-#		when 14
-#			'fourteen'
-#		when 15
-#			'fiveteen'
-#		when 16
-#			'sixteen'
-#		when 17
-#			'seventeen'
-#		when 18
-#			'eighteen'
-#		when 19
-#			'nineteen'
+		when 11
+			'eleven'
+		when 12 
+			'twelve'
+		when 13
+			'thirteen'
+		when 14
+			'fourteen'
+		when 15
+			'fifteen'
+		when 16
+			'sixteen'
+		when 17
+			'seventeen'
+		when 18
+			'eighteen'
+		when 19
+			'nineteen'
+		end
+	end
+
+	def self.translate_twenty_to_ninety_string num
+		case num
 		when 20..29
 			'twenty'
 		when 30..39
