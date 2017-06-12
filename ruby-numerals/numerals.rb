@@ -1,113 +1,75 @@
 require './numerals_strings'
-require 'pry'
-require 'pry-byebug'
-
-#puts 'Hello world'
-
-#puts 'tell me a number'
-#name = gets
-#puts name
+require './numerals_util'
 
 class Numerals 
+
 	def self.translate_numeral num
-		translation = translate_process(num, '', false, false)
+		translate_process(num.to_s.gsub(/[^0-9.]/, "").to_i, '', false, false)
 	end
 
-	def self.translate_process base_num, partial_translation, ignore_zero, space_required
-		evaluate_numeral = base_num
+	def self.translate_process base_num, partial_transl, ignore_zero, space_required
+		num = base_num
 		case base_num
 		when 10000..99999
 			ignore_zero = true
-			numeral_right_part_number = numeral_right_part(evaluate_numeral, 3)
-			numeral_right_part_translation = translate_process(numeral_right_part_number, partial_translation, ignore_zero, space_required)
-			puts numeral_right_part_number
-			puts numeral_right_part_translation
-			numeral_middle_part_number = numeral_fraction(evaluate_numeral, 2, 3)
-			numeral_middle_part_translation = translate_process(numeral_middle_part_number+00, partial_translation, ignore_zero, space_required)
-			puts numeral_middle_part_number
-			puts numeral_middle_part_translation
-			binding.pry
-			numeral_left_part_number = numeral_left_part(evaluate_numeral, 2)
-			numeral_left_part_translation = translate_process(numeral_left_part_number, partial_translation, ignore_zero, space_required)
-			puts numeral_left_part_number
-			puts numeral_left_part_translation
-			partial_translation = 
-				numeral_left_part_translation numeral_left_part_translation + NumeralsStrings.translate_x000 + 
-				add_begin_space_if_not_null(numeral_middle_part_translation) + NumeralsStrings.translate_x00 + 
-				add_begin_space_if_not_null(add_begin_AND_if_not_null(numeral_right_part_translation))
+			right_part_number = NumeralsUtil.numeral_right_part(num, 3)
+			right_part_transl = translate_process(right_part_number, partial_transl, ignore_zero, space_required)
+			third_part_result = NumeralsUtil.add_begin_space_if_not_null(right_part_transl)
+
+			middle_part_number = NumeralsUtil.numeral_fraction(num, 2, 3)
+			middle_part_transl = translate_process(middle_part_number+00, partial_transl, ignore_zero, space_required)
+			second_part_result = NumeralsUtil.add_begin_space_if_not_null(middle_part_transl)
+			second_part_result = NumeralsUtil.add_prefix_if_not_null(
+					NumeralsUtil.add_begin_space_if_not_null(middle_part_transl), ' ' + NumeralsStrings.translate_x00)
+
+			left_part_number = NumeralsUtil.numeral_left_part(num, 2)
+			left_part_transl = translate_process(left_part_number, partial_transl, ignore_zero, space_required)
+			first_part_result = left_part_transl + ' ' + NumeralsStrings.translate_x000
+
+			partial_transl = NumeralsUtil.add_AND_before_last_not_null_part(
+				first_part_result, second_part_result, third_part_result)
 		when 1000..9999
 			ignore_zero = true
-			numeral_right_part_number = numeral_right_part(evaluate_numeral, 2)
-			numeral_right_part_translation = translate_process(numeral_right_part_number, partial_translation, ignore_zero, space_required)
-			numeral_left_part_number = numeral_left_part(evaluate_numeral, 2)
-			numeral_left_part_translation = translate_process(numeral_left_part_number, partial_translation, ignore_zero, space_required)
-			partial_translation = numeral_left_part_translation + ' ' + 
+			right_part_number = NumeralsUtil.numeral_right_part(num, 2)
+			right_part_transl = translate_process(right_part_number, partial_transl, ignore_zero, space_required)
+
+			left_part_number = NumeralsUtil.numeral_left_part(num, 2)
+			left_part_transl = translate_process(left_part_number, partial_transl, ignore_zero, space_required)
+
+			partial_transl = left_part_transl + ' ' + 
 				NumeralsStrings.translate_x00 + 
-				add_begin_space_if_not_null(add_begin_AND_if_not_null(numeral_right_part_translation))
+				NumeralsUtil.add_begin_space_if_not_null(NumeralsUtil.add_begin_AND_if_not_null(right_part_transl))
 		when 100..999
 			ignore_zero = true
-			numeral_right_part_number = numeral_right_part(evaluate_numeral, 1)
-			numeral_right_part_translation = translate_process(numeral_right_part_number, partial_translation, ignore_zero, space_required)
-			numeral_left_part_number = numeral_left_part(evaluate_numeral, 1)
-			numeral_left_part_translation = translate_process(numeral_left_part_number, partial_translation, ignore_zero, space_required)
-			partial_translation = numeral_left_part_translation + ' ' + 
+			right_part_number = NumeralsUtil.numeral_right_part(num, 1)
+			right_part_transl = translate_process(right_part_number, partial_transl, ignore_zero, space_required)
+
+			left_part_number = NumeralsUtil.numeral_left_part(num, 1)
+			left_part_transl = translate_process(left_part_number, partial_transl, ignore_zero, space_required)
+
+			partial_transl = left_part_transl + ' ' + 
 				NumeralsStrings.translate_x00 + 
-				add_begin_space_if_not_null(add_begin_AND_if_not_null(numeral_right_part_translation))
+				NumeralsUtil.add_begin_space_if_not_null(NumeralsUtil.add_begin_AND_if_not_null(right_part_transl))
 		when 10..19
 			ignore_zero = true
-			partial_translation = add_end_space_if_required(partial_translation, space_required) + 
-				NumeralsStrings.translate_10_to_19(evaluate_numeral)
-			evaluate_numeral = numeral_right_part(evaluate_numeral, 2)
-			partial_translation = translate_process(evaluate_numeral, partial_translation, ignore_zero, true)
+			partial_transl = NumeralsUtil.add_end_space_if_required(partial_transl, space_required) + 
+				NumeralsStrings.translate_10_to_19(num)
+			num = NumeralsUtil.numeral_right_part(num, 2)
+			partial_transl = translate_process(num, partial_transl, ignore_zero, true)
 		when 20..99
 			ignore_zero = true
-			partial_translation = add_end_space_if_required(partial_translation, space_required) + 
-				NumeralsStrings.translate_20_to_99(evaluate_numeral)
-			evaluate_numeral = numeral_right_part(evaluate_numeral, 1)
-			partial_translation = translate_process(evaluate_numeral, partial_translation, ignore_zero, true)
+			partial_transl = NumeralsUtil.add_end_space_if_required(partial_transl, space_required) + 
+				NumeralsStrings.translate_20_to_99(num)
+			num = NumeralsUtil.numeral_right_part(num, 1)
+			partial_transl = translate_process(num, partial_transl, ignore_zero, true)
 		when 0..9
-			if(0 != evaluate_numeral || !ignore_zero) 
-				partial_translation = add_end_space_if_required(partial_translation, space_required) + 
-					NumeralsStrings.translate_0_to_9(evaluate_numeral)
+			if(0 != num || !ignore_zero) 
+				partial_transl = NumeralsUtil.add_end_minus_if_required(partial_transl, space_required) + 
+					NumeralsStrings.translate_0_to_9(num)
 			end
 		end
 		space_required = true
-		partial_translation
-	end
-
-	def self.numeral_right_part num, cut_position
-		num.to_s[cut_position..-1].to_i
-	end
-
-	def self.numeral_left_part num, cut_position
-		num.to_s[0..cut_position-1].to_i
-	end
-
-	def self.numeral_fraction num, cut_position_begin, cut_position_end
-		num.to_s[cut_position_begin..cut_position_end-1].to_i
-	end
-
-	def self.add_end_space_if_required partial_translation, space_required
-		if (space_required) 
-			partial_translation = partial_translation + ' '
-		end
-		partial_translation
-	end
-
-	def self.add_begin_space_if_not_null partial_translation
-		add_begin_something_if_not_null(partial_translation, ' ')
-	end
-
-	def self.add_begin_AND_if_not_null partial_translation
-		add_begin_something_if_not_null(partial_translation, 'and ')
-	end
-
-	def self.add_begin_something_if_not_null partial_translation, something
-		if (partial_translation.length > 0) 
-			partial_translation = something + partial_translation
-		end
-		partial_translation
+		partial_transl
 	end
 
 end
-
