@@ -23,3 +23,26 @@ For example:
 1999 == nineteen hundred and ninety-nine
 17999 == seventeen thousand nine hundred and ninety-nine
 </pre>
+
+--------------------
+
+To run this application
+========================================
+<ul>
+<li>install ruby</li>
+<li>download this git files.</li>
+<li>run the main.rb file under the following code:</li>
+</ul>
+<pre>
+ruby main.rb
+</pre>
+
+It will ask you a numeral, then it will return the translation of the numeral just inserted.
+
+To evaluate the tests
+---------------------
+to evaluate the tests made during the development, run the following code:
+<pre>
+ruby numerals_test.rb
+</pre>
+
