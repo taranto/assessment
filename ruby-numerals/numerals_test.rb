@@ -87,10 +87,13 @@ class NumeralsTest < Test::Unit::TestCase
  	def test_translate_a_dirty_numeral_to_english7
 		assert_equal('seven', Numerals.translate_numeral('fadsfadf7'))
  	end
- 	def test_translate_a_dirty_numeral_to_englishNil
+ 	def test_translate_a_dirty_numeral_to_english_nil
 		assert_equal('zero', Numerals.translate_numeral(''))
  	end
- 	def test_translate_a_dirty_numeral_to_englishFraction
+ 	def test_translate_a_dirty_numeral_to_english_fraction
 		assert_equal('zero', Numerals.translate_numeral('0.55'))
+ 	end
+ 	def test_translate_a_numeral_to_english_overflow
+		assert_equal('', Numerals.translate_numeral('123456'))
  	end
 end	

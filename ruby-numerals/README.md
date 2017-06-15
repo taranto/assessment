@@ -30,19 +30,22 @@ To run this application
 ========================================
 <ul>
 <li>install ruby</li>
-<li>download this git files.</li>
-<li>run the main.rb file under the following code:</li>
+<li>download these git files.</li>
+<li>run the ruby-numerals.rb file under the following code:</li>
 </ul>
 <pre>
-ruby main.rb
+ruby ruby-numerals.rb
 </pre>
 
 It will ask you a numeral, then it will return the translation of the numeral just inserted.
+It only supports numbers below 100 000
 
 To evaluate the tests
 ---------------------
-to evaluate the tests made during the development, run the following code:
+To evaluate the tests made during the development, run the following code:
 <pre>
 ruby numerals_test.rb
 </pre>
 
+There is also a support class with it's tests for validations, and they're called numerals_util.rb and numerals_util_test.rb.
+The archive numerals_string.rb is only meant to separate the text from the logic.

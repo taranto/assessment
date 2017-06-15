@@ -4,12 +4,14 @@ require './numerals_util'
 class Numerals 
 
 	def self.translate_numeral num
-		translate_process(num.to_s.gsub(/[^0-9.]/, "").to_i, '', false, false)
+		num = NumeralsUtil.clear_number(num)
+		translate_process(num, '', false, false)
 	end
 
-	def self.translate_process base_num, partial_transl, ignore_zero, space_required
-		num = base_num
-		case base_num
+	private
+
+	def self.translate_process num, partial_transl, ignore_zero, space_required
+		case num
 		when 10000..99999
 			ignore_zero = true
 			right_part_number = NumeralsUtil.numeral_right_part(num, 3)

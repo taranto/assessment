@@ -57,4 +57,7 @@ class NumeralsUtil
 		end
 		part1 + part2 + part3
 	end
+	def self.clear_number dirty_number
+		dirty_number.to_s.gsub(/[^0-9.]/, "").to_i
+	end
 end
