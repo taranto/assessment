@@ -70,7 +70,7 @@ class Numerals
 					NumeralsStrings.translate_0_to_9(num)
 			end
 		end
-		space_required = true
+
 		partial_transl
 	end
 
