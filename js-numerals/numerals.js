@@ -1,8 +1,8 @@
-// var should = require('should');
-function testAll() {
-	document.write("Hello World2!");
 
-	assert.equal(1, 1, 'this is ok!!');
-
+function translateNumeral(num) {
+	return translateProcess(num);
 }
 
+function translateProcess(num) {
+	return translate0to9(num);
+}
