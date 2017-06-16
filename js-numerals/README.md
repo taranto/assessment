@@ -35,5 +35,4 @@ Extra points:
 UNDER DEVELOPMENT
 ====================================
 
-https://nodejs.org/en/download/ (following your SO definition)
 https://github.com/Jxck/assert
