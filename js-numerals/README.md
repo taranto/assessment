@@ -30,3 +30,10 @@ That's all.
 Extra points:
 
 * write your code in TDD / BDD, use any test frameworks
+
+
+UNDER DEVELOPMENT
+====================================
+
+https://nodejs.org/en/download/ (following your SO definition)
+https://github.com/Jxck/assert
