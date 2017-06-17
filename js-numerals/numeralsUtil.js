@@ -20,6 +20,12 @@ function addEndSomethingIfRequired(partialTransl, spaceReq, something) {
 	}
 	return partialTransl;
 }
+function addPrefixIfNotNull(partialTransl, prefix) {
+	if (isEmpity(partialTransl)) {
+		partialTransl = partialTransl + prefix
+	}
+	return partialTransl;
+}
 function addBeginSpaceIfNotNull(partialTransl) {
 	return addBeginSomethingIfNotNull(partialTransl, ' ');
 }
@@ -27,8 +33,22 @@ function addBeginANDIfNotNull(partialTransl) {
 	return addBeginSomethingIfNotNull(partialTransl, 'and ');
 }
 function addBeginSomethingIfNotNull(partialTransl, something) {
-	if (partialTransl != null && partialTransl.length > 0) { 
+	if (isEmpity(partialTransl)) { 
 		partialTransl = something + partialTransl;
 	}
 	return partialTransl;
+}
+function addANDBeforeLastNotNullPart(part1, part2, part3) {
+	if (isEmpity(part3)) {
+		part3 = ' and' + part3;
+	} else if (isEmpity(part2)) {
+		part2 = ' and' + part2;
+	}
+	return part1 + part2 + part3;
+}
+function isEmpity(s) {
+	return s != null && s.length > 0;
+}
+function clearNumber (dirtyNum) {
+	return dirtyNum;
 }

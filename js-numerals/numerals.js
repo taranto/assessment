@@ -4,7 +4,23 @@ function translateNumeral(num) {
 }
 
 function translateProcess(num, partialTransl, ignoreZero, spaceRequired) {
-	if (num >= 1000 && num <= 9999) {
+	if (num >= 10000 && num <= 99999) {
+			ignoreZero = true
+			rightPartNumber = numeralRightPart(num, 3);
+			rightPartTransl = translateProcess(rightPartNumber, partialTransl, ignoreZero, spaceRequired);
+			thirdPartResult = addBeginSpaceIfNotNull(rightPartTransl);
+
+			middlePartNumber = numeralFraction(num, 2, 3);
+			middlePartTransl = translateProcess(middlePartNumber+00, partialTransl, ignoreZero, spaceRequired);
+			secondPartResult = addBeginSpaceIfNotNull(middlePartTransl);
+			secondPartResult = addPrefixIfNotNull(addBeginSpaceIfNotNull(middlePartTransl), ' ' + translateX00());
+
+			leftPartNumber = numeralLeftPart(num, 2);
+			leftPartTransl = translateProcess(leftPartNumber, partialTransl, ignoreZero, spaceRequired);
+			firstPartResult = leftPartTransl + ' ' + translateX000()
+
+			partialTransl = addANDBeforeLastNotNullPart(firstPartResult, secondPartResult, thirdPartResult);
+	} else if (num >= 1000 && num <= 9999) {
 		ignoreZero = true
 		rightPartNumber = numeralRightPart(num, 2);
 		rightPartTransl = translateProcess(rightPartNumber, partialTransl, ignoreZero, spaceRequired);
