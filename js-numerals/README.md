@@ -32,7 +32,25 @@ Extra points:
 * write your code in TDD / BDD, use any test frameworks
 
 
-UNDER DEVELOPMENT
+To run this application
 ====================================
+<ul>
+<li>Download these files</li>
+<li>Run js-numerals.html</li>
+</ul>
 
-https://github.com/Jxck/assert
+It will ask you a numeral, then it will return the translation of the numeral just inserted.
+It only supports numbers below 100 000
+
+To evaluate the tests
+---------------------
+To evaluate the tests made during the development, run the following html:
+
+<ul>
+<li>Run js-numeralsTest.html</li>
+</ul>
+
+Project decision making
+---------------------
+I decided to use a very simple assertion library found at https://github.com/Jxck/assert. 
+It is only a pure validator, so I decided to build a report of it myself. The reason I did it it because the business logic wouldn't be any effort, as it was already solved in the ruby programming. Then the javascript one 'would have something to do'.

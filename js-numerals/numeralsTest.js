@@ -1,16 +1,19 @@
+class NumeralsTest{ 
 
-var ur = 'This is an unexpected result!';
+ 	testAll() {
+ 		var tc = new TestComponent();
+		tc.testIt(translateNumeral(7), 'seven');
+		tc.testIt(translateNumeral(0), 'zero');
+		tc.testIt(translateNumeral(20), 'twenty');
+		tc.testIt(translateNumeral(42), 'forty-two');
+		tc.testIt(translateNumeral(66), 'sixty-six');
+		tc.testIt(translateNumeral(10), 'ten');
+		tc.testIt(translateNumeral(12), 'twelve');
+		tc.testIt(translateNumeral(15), 'fifteen');
+		tc.testIt(translateNumeral(100), 'one hundred');
+		tc.testIt(translateNumeral(101), 'one hundred and one');
+		tc.testIt(translateNumeral(444), 'four hundred and forty-four');
+		return tc.getReport() + ' <br/> ' + tc.getDetailedReport();
+	}
 
-function testAll() {
-	var testResult = 'An assertion has failed!';
-	assert.equal(translateNumeral(7), 'seven', ur);
-	assert.equal(translateNumeral(0), 'zero', ur);
-	assert.equal(translateNumeral(20), 'twenty', ur);
-	assert.equal(translateNumeral(42), 'forty-two', ur);
-	assert.equal(translateNumeral(66), 'sixty-six', ur);
-	assert.equal(translateNumeral(10), 'ten', ur);
-	assert.equal(translateNumeral(12), 'twelve', ur);
-	assert.equal(translateNumeral(15), 'fifteen', ur);
-	testResult = 'All asserts are valid!'
-	return testResult;
 }

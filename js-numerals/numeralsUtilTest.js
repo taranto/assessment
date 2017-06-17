@@ -1,17 +1,14 @@
+class NumeralsUtilTest{ 
 
-var ur = 'This is an unexpected result!';
+ 	testAll() {
+ 		var tc = new TestComponent();
+		tc.testIt(numeralRightPart(123456, 1), 23456);
+		tc.testIt(numeralRightPart(123456, 2), 3456);
+		tc.testIt(numeralLeftPart(123456, 1), 1);
+		tc.testIt(numeralLeftPart(123456, 2), 12);
+		tc.testIt(numeralFraction(123456, 3, 4), 4);
+		tc.testIt(numeralFraction(123456, 2, 5), 345);
+		return tc.getReport() + ' <br/> ' + tc.getDetailedReport();
+	}
 
-function testAll() {
-	var testResult = 'All asserts are valid!';
-//	try {
-		assert.equal(numeralRightPart(123456, 1), 23456, ur);
-		assert.equal(numeralRightPart(123456, 2), 3456, ur);
-		assert.equal(numeralLeftPart(123456, 1), 1, ur);
-		assert.equal(numeralLeftPart(123456, 2), 12, ur);
-		assert.equal(numeralFraction(123456, 3, 4), 4, ur);
-		assert.equal(numeralFraction(123456, 2, 5), 345, ur);
-//	} catch (e) {
-//		testResult = 'An assert failed: ' + e;
-//	}
-	return testResult;
 }

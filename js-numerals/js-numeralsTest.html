@@ -1,17 +1,19 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Numerals translation to english</title>
+		<title>Testing numerals translation to english</title>
 		<script type="text/javascript" src="./bower_components/node-assert/assert.js"></script>
 		<script type="text/javascript" src="./numerals.js"></script> 
 		<script type="text/javascript" src="./numeralsTest.js"></script> 
 		<script type="text/javascript" src="./numeralsStrings.js"></script> 
 		<script type="text/javascript" src="./numeralsUtil.js"></script> 
+		<script type="text/javascript" src="./TestComponent.js"></script> 
 	</head>
 
 	<body>
 		<script>
-			var testResult = testAll();
+			var nt = new NumeralsTest();
+			var testResult = nt.testAll();
 			document.write(testResult);
 		</script>
 	</body>
