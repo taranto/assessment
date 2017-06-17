@@ -4,7 +4,18 @@ function translateNumeral(num) {
 }
 
 function translateProcess(num, partialTransl, ignoreZero, spaceRequired) {
-	if (num >= 100 && num <= 999) {
+	if (num >= 1000 && num <= 9999) {
+		ignoreZero = true
+		rightPartNumber = numeralRightPart(num, 2);
+		rightPartTransl = translateProcess(rightPartNumber, partialTransl, ignoreZero, spaceRequired);
+
+		leftPartNumber = numeralLeftPart(num, 2);
+		leftPartTransl = translateProcess(leftPartNumber, partialTransl, ignoreZero, spaceRequired);
+
+		partialTransl = leftPartTransl + ' ' + translateX00() + 
+			addBeginSpaceIfNotNull(addBeginANDIfNotNull(rightPartTransl));
+
+	} else if (num >= 100 && num <= 999) {
 		ignoreZero = true;
 		var rightPartNumber = numeralRightPart(num, 1);
 		var rightPartTransl = translateProcess(rightPartNumber, partialTransl, ignoreZero, spaceRequired);
