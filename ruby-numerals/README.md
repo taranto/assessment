@@ -29,9 +29,9 @@ For example:
 To run this application
 ========================================
 <ul>
-<li>install ruby</li>
-<li>download these git files.</li>
-<li>run the ruby-numerals.rb file under the following code:</li>
+<li>Install ruby</li>
+<li>Download these git files</li>
+<li>Run the ruby-numerals.rb file under the following code:</li>
 </ul>
 <pre>
 ruby ruby-numerals.rb
@@ -47,5 +47,10 @@ To evaluate the tests made during the development, run the following code:
 ruby numerals_test.rb
 </pre>
 
+Project decision making
+---------------------
+I made the tests and development until the five digits because of the examples length. The examples were the main goal towards the objective during the development.
+Considering the reason above, all the tests and development were meant to work with the examples given. Also, that's why the phrase is divided like 2-1-2 for a 5-length number. Another thing is important to be said: the '-' between the 2-digit numbers were also meant to work with the examples, even if they were placed in the thousands and hundreds.
+The reasons why I actually mention about it is because I could've called, for example, a number as 'one thousand nine hundred and ninety nine' (divided like 1-1-2, and no minus character between them).
 There is also a support class with it's tests for validations, and they're called numerals_util.rb and numerals_util_test.rb.
 The archive numerals_string.rb is only meant to separate the text from the logic.
