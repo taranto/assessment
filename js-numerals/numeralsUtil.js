@@ -21,7 +21,7 @@ function addEndSomethingIfRequired(partialTransl, spaceReq, something) {
 	return partialTransl;
 }
 function addPrefixIfNotNull(partialTransl, prefix) {
-	if (isEmpity(partialTransl)) {
+	if (!isEmpity(partialTransl)) {
 		partialTransl = partialTransl + prefix
 	}
 	return partialTransl;
@@ -33,27 +33,29 @@ function addBeginANDIfNotNull(partialTransl) {
 	return addBeginSomethingIfNotNull(partialTransl, 'and ');
 }
 function addBeginSomethingIfNotNull(partialTransl, something) {
-	if (isEmpity(partialTransl)) { 
+	if (!isEmpity(partialTransl)) { 
 		partialTransl = something + partialTransl;
 	}
 	return partialTransl;
 }
 function addANDBeforeLastNotNullPart(part1, part2, part3) {
-	if (isEmpity(part3)) {
+	if (!isEmpity(part3)) {
 		part3 = ' and' + part3;
-	} else if (isEmpity(part2)) {
+	} else if (!isEmpity(part2)) {
 		part2 = ' and' + part2;
 	}
 	return part1 + part2 + part3;
 }
 function isEmpity(s) {
-	return s != null && s.length > 0;
+	return s == null || s == undefined || s.length == 0;
 }
 function clearNumber (dirtyNum) {
-	// var partialValue = Math.floor(dirtyNum)
-	var partialValue = dirtyNum.toString().replace(/[^\d.]/g, '');
-	if (partialValue == '') { 
-		partialValue = 0;
+	if (isEmpity(dirtyNum)) { 
+		dirtyNum = 0;
 	}
-	return parseInt(partialValue);
+	dirtyNum = dirtyNum.toString().replace(/[^\d.]/g, '');
+	if (isEmpity(dirtyNum)) { 
+		dirtyNum = 0;
+	}
+	return parseInt(dirtyNum);
 }

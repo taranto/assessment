@@ -4,11 +4,26 @@
 		<title>Numerals translation to english</title>
 		<script type="text/javascript" src="./bower_components/node-assert/assert.js"></script>
 		<script type="text/javascript" src="./numerals.js"></script> 
+		<script type="text/javascript" src="./numeralsUtil.js"></script> 
+		<script type="text/javascript" src="./numeralsStrings.js"></script> 
 	</head>
 
 	<body>
 		<script>
-			document.write("Hello World!");
+			function translation() {
+				var valueInserted = document.getElementById('numeral').value;
+				var translation = translateNumeral(valueInserted);
+				if (isEmpity(translation)) {
+					document.getElementById('translation').innerHTML = 'I\'m not ready to give this answer yet...';
+				} else {
+					document.getElementById('translation').innerHTML = 'The number is called ' + translation;
+				}
+			}
 		</script>
+		<form>
+		  Tell me a number, then I give you it's name in english<br/>
+		  <input type="text" name="numeral" id="numeral" onkeyup="translation()" >
+		</form>
+		<div id="translation"></div>
 	</body>
 </html>
