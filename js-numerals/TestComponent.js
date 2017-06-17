@@ -11,6 +11,13 @@ class TestComponent {
 		this.testMsgs = [];
 	}
 
+	clear() {
+		this.assertions = 0;
+		this.failures = 0;
+		this.tests = 0;
+		this.testMsgs = [];
+	}
+
 	testIt(value, expect) {
 		this.tests++;
 		var testMsg = 'Valid assertion!';

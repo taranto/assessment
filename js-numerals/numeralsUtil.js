@@ -20,3 +20,15 @@ function addEndSomethingIfRequired(partialTransl, spaceReq, something) {
 	}
 	return partialTransl;
 }
+function addBeginSpaceIfNotNull(partialTransl) {
+	return addBeginSomethingIfNotNull(partialTransl, ' ');
+}
+function addBeginANDIfNotNull(partialTransl) {
+	return addBeginSomethingIfNotNull(partialTransl, 'and ');
+}
+function addBeginSomethingIfNotNull(partialTransl, something) {
+	if (partialTransl != null && partialTransl.length > 0) { 
+		partialTransl = something + partialTransl;
+	}
+	return partialTransl;
+}
