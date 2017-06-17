@@ -23,15 +23,15 @@ class NumeralsTest{
 		tc.testIt(translateNumeral(11012), 'eleven thousand and twelve');
 		tc.testIt(translateNumeral(11100), 'eleven thousand and one hundred');
 		tc.testIt(translateNumeral(11111), 'eleven thousand one hundred and eleven');
-		// tc.testIt(translateNumeral('1\n'), 'one');
-		// tc.testIt(translateNumeral('2\a*(())_+-=][adsfadn'), 'two');
-		// tc.testIt(translateNumeral('003,0'), 'thirty');
-		// tc.testIt(translateNumeral('4,0'), 'forty');
-		// tc.testIt(translateNumeral('fadsfadf'), 'zero');
-		// tc.testIt(translateNumeral('fadsfadf7'), 'seven');
-		// tc.testIt(translateNumeral(''), 'zero');
-		// tc.testIt(translateNumeral('0.55'), 'zero');
-		// tc.testIt(translateNumeral(123456), '');
+		tc.testIt(translateNumeral('1\n'), 'one');
+		tc.testIt(translateNumeral('2\a*(())_+-=][adsfadn'), 'two');
+		tc.testIt(translateNumeral('003,0'), 'thirty');
+		tc.testIt(translateNumeral('4,0'), 'forty');
+		tc.testIt(translateNumeral('fadsfadf'), 'zero');
+		tc.testIt(translateNumeral('fadsfadf7'), 'seven');
+		tc.testIt(translateNumeral(''), 'zero');
+		tc.testIt(translateNumeral('0.55'), 'zero');
+		tc.testIt(translateNumeral(123456), '');
 		return tc.getReport() + ' <br/> ' + tc.getDetailedReport();
 	}
 

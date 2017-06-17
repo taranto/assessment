@@ -50,5 +50,10 @@ function isEmpity(s) {
 	return s != null && s.length > 0;
 }
 function clearNumber (dirtyNum) {
-	return dirtyNum;
+	// var partialValue = Math.floor(dirtyNum)
+	var partialValue = dirtyNum.toString().replace(/[^\d.]/g, '');
+	if (partialValue == '') { 
+		partialValue = 0;
+	}
+	return parseInt(partialValue);
 }
